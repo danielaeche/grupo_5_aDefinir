@@ -78,6 +78,4 @@ Autores
 - Rodrigo Leguizamón
 - Daniela Echenique
 - Ignacio Traversi
--
--
 
