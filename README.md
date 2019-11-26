@@ -74,4 +74,10 @@ Seleccionado por similitud en productos ofrecidos y clientes a los que apuntan.
 
 
 Autores
+- Luciana Sanjurjo
+- Rodrigo Leguizamón
+- Daniela Echenique
+- Ignacio Traversi
+-
+-
 
