@@ -5,16 +5,18 @@ URL del repositorio
 https://github.com/danielaeche/grupo_5_aDefinir.git
 
 
-Descripci髇
+Descripci贸n
 
-La p醙ina esta dedicada a la venta de frutas y verduras org醤icas. Exisitiran 2 modelos de compra, uno por selecci髇 del cliente de los productos y el otro modelo para compra de bolsones ya armados y cerrados.
-Esta orientada a gente que compra productos frescos y org醤icos.
-No hay envios, solamente se entregaran los pedidos en la direcci髇 publicada.
+La p谩gina esta dedicada a la venta de frutas y verduras org谩nicas. Exisitiran 2 modelos de compra, uno por selecci贸n del cliente de los productos y el otro modelo para compra de bolsones ya armados y cerrados.
+Esta orientada a gente que compra productos frescos y org谩nicos.
+No hay envios, solamente se entregaran los pedidos en la direcci贸n publicada.
 Para poder hacer una compra tenes que generarte un usuario. Se puede navegar por la pagina sin usuario pero al momento de agregar un producto al carrito va a pedir conectarse al usuario (o generar uno nuevo si no tuviese).
 Se esta analizando la posibilidad de habilitar los pagos con mercado pago. Por ahora los pagos se realizan presencialmente el dia del retiro del pedido.
 
 
-Navegaci髇
+Navegaci贸n
+
+Ingresar a https://localhost/green/index.html
 
 1) En pagina Inicial:
 Ingresar con tu usuario: va a registro
