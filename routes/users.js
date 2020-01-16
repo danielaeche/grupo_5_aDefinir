@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 var bcrypt = require('bcrypt');
 const { check, validationResult, body } = require('express-validator')
 
@@ -30,12 +31,12 @@ router.post('/register', userValidation, function(req, res){
   //encriptar la password con libreria "bcrypt"
   bcrypt.hash(password, salt, function(err, hash) {
     // guardar el usuario con su pass encriptada (hash) en la base
-    var usuario = {"email":"username","password":"hash"}
-    let users = fs.readFileSync('src/data/users.json', {enconding: 'utf-8'})
+    var usuario = {"email":username,"password":hash}
+    let users = fs.readFileSync('data/users.json', {enconding: 'utf-8'})
     users = JSON.parse(users)
     users.push(usuario) 
     users = JSON.stringify(users)
-    fs.writeFileSync('src/data/users/.json', users)
+    fs.writeFileSync('data/users.json', users)
   });
   
   res.redirect(301, '/users/login')
@@ -48,6 +49,7 @@ router.get('/login', function(req, res) {
 
 /* POST login*/
 router.post('/login', userValidation, function(req, res){
+
   let result = validationResult(req)
 
   if(!result.isEmpty()){
@@ -55,30 +57,52 @@ router.post('/login', userValidation, function(req, res){
       errors: result.errors,
       data: req.body
     })
-  }
+  }  
   
   // comparar usuario y password
-  const email = req.body.email;
-  const password = req.body.password;
-
-  var emailAlmacenado = null;
-  let users = fs.readFileSync('src/data/users.json', {enconding: 'utf-8'})
+  let users = fs.readFileSync('data/users.json', {enconding: 'utf-8'})
   users = JSON.parse(users)
-  for(let i; i< users.length(); i++){
+  let temporal = null;
+  for(let i = 0; i < users.length; i++){
     if (req.body.email == users[i].email){
-        emailAlmacenado = users[i].email;
-        bcrypt.compare(req.body.password, users[i].password, function(err, res) {
-          if(res) {
+      temporal = req.body.email;
+      
+        bcrypt.compare(req.body.password, users[i].password, function(err, result) {
+          
+          if(result) {
             // Passwords match
-            res.redirect(301, '/users/welcome')
+            // guardar usuario logeado en el file usersLog.json 
+            var usuario = {"email":req.body.email}
+            // let users = fs.readFileSync('data/usersLog.json', {enconding: 'utf-8'})
+            // users = JSON.parse(users)
+            // users.push(usuario) 
+            // users = JSON.stringify(users)
+            // fs.writeFileSync('data/usersLog.json', users)
+
+            req.session.user = usuario;
+
+            console.log(req.session);
+            
+            return res.redirect('/');
+            //res.redirect('/users/welcome')
           } else {
           // Passwords don't match
-            res.withMessage('Password invalido')
+            return res.render('login', {
+              errors: [
+                { msg: "password incorrecto"}
+              ]
+            });
           } 
         })
-    }
-  }  
- 
+    } 
+  }
+  if(temporal==null){
+    return res.render('login', {
+    errors: [
+      {msg: 'Usuario no encontrado'}
+    ]
+    })
+  }
   
 })
 
