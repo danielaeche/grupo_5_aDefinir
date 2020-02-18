@@ -1,4 +1,4 @@
-CREATE DATABASE 'green'
+CREATE DATABASE 'green_db'
 
 CREATE TABLE 'users' (
   'userId' smallint(6) NOT NULL,
