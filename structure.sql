@@ -20,7 +20,7 @@ CREATE TABLE 'carrito' (
 );
 
 CREATE TABLE 'productos' (
-  'productoId' smallint(6) NOT NULL,
+  'id' smallint(6) NOT NULL,
   'categoria' varchar(85) NOT NULL,
   'nombre' varchar(85) NOT NULL,
   'descripcion' varchar(255) DEFAULT NULL,

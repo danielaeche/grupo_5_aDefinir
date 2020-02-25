@@ -15,11 +15,15 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        create_at: {
+        foto: {
+            type: dataTypes.STRING,
+            allowNull: true
+        },
+        createAt: {
             type: dataTypes.timestamps,
             allowNull: false
         },
-        update_at: {
+        updateAt: {
             type: dataTypes.timestamps,
             allowNull: true
         }
@@ -33,13 +37,13 @@ module.exports = (sequelize, dataTypes) => {
 
 const users = sequelize.define(alias,cols,config);
 
-/* relacion con carrito
+/* relacion con carrito */
 users.associate = function(models){
     users.hasMany(models.carrito,{
-        as: "",
-        foreignKey: ""
+        as: "carritos",
+        foreignKey: "userId"
     });
-} */
+} 
 
 return users;
 
