@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var usersControllers= require ('../controllers/usersControllers');
 const { check, validationResult, body } = require('express-validator')
 
 
@@ -8,9 +9,7 @@ let userValidation = [
   check('password').isLength({min:6, max:12}).withMessage('El password debe tener entre 6 y 12 caracteres'),
 ]
 
-router.get('/register', function (req, res){
-  res.render('register')
-})
+router.get('/register', usersControllers.index)
 
 router.post('/register', userValidation, function(req, res){
   let result = validationResult(req)
@@ -33,9 +32,7 @@ router.post('/register', userValidation, function(req, res){
 })
 
 /* GET login. */
-router.get('/login', function(req, res) {
-  res.render('login')
-})
+router.get('/login', usersControllers.login)
 /* POST login*/
 router.post('/login', userValidation, function(req, res){
   let result = validationResult(req)

@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+let bolsonesControllers= require ('../controllers/bolsonesControllers');
 
-router.get('/', function(req, res) {
-    res.render('bolsones')
-  });
+router.get('/', bolsonesControllers.index);
 
 
 module.exports = router;

@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var productosControllers= require ('../controllers/detalleControllers');
 
-router.get('/', function(req, res) {
-    res.render('detalle-producto')
-  });
+router.get('/', detalleControllers.index);
 
 
 module.exports = router;
