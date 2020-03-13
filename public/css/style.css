@@ -66,26 +66,25 @@ h3{
     padding-bottom: 20px;
     padding-top: 20px;
 }
-footer{
+.contenedor-padre{
+    display: flex;
     background-color: grey;
-    height: 305px;
-    padding: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
 }
-img.mapa{
-    float: left;
-    width: 400px;
-    height: 270px;
+.mapa{
+    width: 50%;
 }
 .texto-dire{
-    display: block;
-    float: left;
-    width: 80px;
+    width: 25%;
     color: white;
     padding-left: 10px;
     
 }
 .contacto{
-    float: right;
+    width: 25%;
     color: white;
 }
 .contacto ul li{
