@@ -99,8 +99,10 @@ h3{
     
 }
 
-/* fin CSS Home*/
+/* FIN CSS Home*/
 
+
+/* CSS detalle-productos*/
 .barra{
     background-color: whitesmoke; 
     justify-content: flex-end;
@@ -136,9 +138,6 @@ article{
 article h1{
     margin: 5%;
 }
-article h2{
-    margin: 5%;
-}
 article h4{
     margin: 6% 3%;
 }
@@ -154,13 +153,83 @@ article p{
 article button{
     margin-left: 50%;
 }
-section div{
+.productos{
     width: 100%;
     background-color: #008000;
     justify-content: flex-end;
     display: flex;
 
 }
-.art2{
+#art2{
     align-self: stretch;
 }
+/* FIN CSS detalle-productos*/
+
+
+
+/* CSS carrito*/
+.encabezado{
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: black;
+    font-size: 30px;
+}
+
+.compras{
+    display: block;
+    width: 50%;
+    
+}
+
+.producto{
+    display: block;
+    width:70%;
+    background-color: lightgrey;
+}
+
+.photo-container{
+    padding: 10px;
+    position: relative;
+    float: left;
+}
+.photo{
+    border-radius: 10%;
+}
+.descripcion{
+    position: relative;
+    float: left;
+    text-align: left;
+    padding: 10px;
+    top: 22%;
+}
+
+
+.descripcion ul li{
+    list-style-type: none;
+}
+
+.totales{
+    display: block;
+    width: 50%;
+    position: relative;
+    float: right;
+    text-align: center;
+    padding: 50px;
+    background-color: gainsboro;
+}
+.total-final{
+    padding: 20px;
+    background-color: rgb(121, 155, 121);
+    font-weight: bold;
+}
+.pedido{
+    padding: 10px;
+}
+.calendario{
+    padding: 10px;
+}
+.boton-comprar{
+    padding: 10px;
+}
+/* FIN CSS carrito*/
