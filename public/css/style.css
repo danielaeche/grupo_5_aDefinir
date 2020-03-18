@@ -121,12 +121,18 @@ h3{
 body{
     width: 100%;
 }
+.container-fluid{
+    padding: 0;
+}
 section{
     width: 100%;
     background-color: white;
     display: flex;
     flex-wrap: wrap;
 
+}
+section.row{
+    margin: 0;
 }
 article{
     width: 50%;
