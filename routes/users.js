@@ -32,7 +32,12 @@ router.post('/register', userValidation, function(req, res){
 })
 
 /* GET login. */
-router.get('/login', usersControllers.login)
+router.get('/login', usersControllers.login);
+
+
+
+
+
 /* POST login*/
 router.post('/login', userValidation, function(req, res){
   let result = validationResult(req)

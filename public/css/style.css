@@ -21,15 +21,6 @@
     display: flex;
     height: 100%;
 }
-.barra button{
-    margin: 0.5%;
-    background-color: whitesmoke;
-    border: none;
-}
-.barra input{
-    margin: 0.5%;
-    background-color: whitesmoke;
-}
 
 .menu{
     position: relative;
@@ -103,21 +94,7 @@ h3{
 
 
 /* CSS detalle-productos*/
-.barra{
-    background-color: whitesmoke; 
-    justify-content: flex-end;
-    display: flex;
-    height: 100%;
-}
-.barra button{
-    margin: 0.5%;
-    background-color: whitesmoke;
-    border: none;
-}
-.barra input{
-    margin: 0.5%;
-    background-color: whitesmoke;
-}
+
 body{
     width: 100%;
 }
