@@ -46,7 +46,10 @@ main{
     height: 600px;
     color:black;
     text-align: center;
-    background-image: url("../images/mix3.jpg");
+    background-image: url("../images/background-home.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .titulos{
     font-size: larger;
