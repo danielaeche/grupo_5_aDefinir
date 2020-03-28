@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var usersControllers= require ('../controllers/usersControllers');
 var bcrypt = require('bcrypt');
 const { check, validationResult, body } = require('express-validator')
 
