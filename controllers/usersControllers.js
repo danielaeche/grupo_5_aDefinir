@@ -6,7 +6,6 @@ const usersControllers= {
 
     login: function(req, res) {
         res.render('login')
-    }
-
+    },
 }
-module.exports= usersControllers;
+ module.exports = usersControllers;
