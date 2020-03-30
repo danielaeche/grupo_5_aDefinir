@@ -5,7 +5,7 @@
     
 <body>
     <%- include('partials/header.ejs') %>
-    <form action="/users/register" method="post">
+    <form action="/users/register" method="post" class="form-register">
         <div class="form-group">
             <% if (typeof errors !== 'undefined') { errors.map(function(error) { %>
                 
@@ -16,14 +16,19 @@
             <label for="">Registrese con su email</label>
             <input type="text" name="email" class="form-control" 
                    value="<%= typeof data != 'undefined' ? data.email: '' %>">
-        </div>
+        </div><br>
         <div class="form-group">
-            <label for="">Ingrese una clave</label>
+            <label for="password">Ingrese una clave</label>
             <input type="password" name="password" class="form-control" 
             value="<%= typeof data != 'undefined' ? data.password: '' %>">
-        </div>
+        </div><br>
+        
         <div class="form-group">
-            <button class="btn-btn-primary" ><a href="/">Registrarse</a></button>
+            <label for="filename">Seleccione una imagen de perfil</label>
+        <input type="file" name="filename" class="form-control" style="border: none;">
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-outline-success" ><a href="/users/login" style="text-decoration:none; color: black;" >Registrarse</a></button>
         </div>
     </form>
     <%- include('partials/scripts.ejs') %>

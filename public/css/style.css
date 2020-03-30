@@ -42,7 +42,7 @@
     padding: 5px;
 }
 
-main{
+.main-home{
     height: 600px;
     color:black;
     text-align: center;
@@ -219,3 +219,41 @@ article button{
     padding: 10px;
 }
 /* FIN CSS carrito*/
+
+/* CSS formulario de registro*/
+.form-register{
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background: whitesmoke;
+    position: relative;
+    left: 25%;
+   
+}
+
+/* CSS formulario de login*/
+.form-login{
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background: whitesmoke;
+    position: relative;
+    left: 25%;
+    top: 40px;
+   
+}
+
+/* CSS formulario de perfil*/
+.form-perfil{
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background: whitesmoke;
+    position: relative;
+    left: 25%;
+    top: 20px;
+   
+}
