@@ -56,10 +56,10 @@ router.get('/login', usersControllers.login)
 router.post('/login', userValidation, function(req, res){
   let result = validationResult(req);
   if (result.isEmpty()) {
-    db.users.findOne({ where: { mail: req.body.email } })
+    db.users.findAll({ where: { mail: req.body.email } })
       .then(data => {
         if (bcrypt.compareSync(req.body.password, data.password)) {
-          req.session.username = data.email    
+          req.session.userName = data.email 
           res.redirect("/users/perfil");
         } else {
           res.render("login", {
