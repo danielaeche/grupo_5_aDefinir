@@ -1,13 +1,13 @@
 CREATE DATABASE IF NOT EXISTS green_db;
 
-CREATE TABLE 'users' (
-  'id' smallint(6) NOT NULL,
-  'mail' varchar(95) NOT NULL,
-  'password' varchar(95) NOT NULL,
-  'foto' varchar(255) DEFAULT NULL,
-  'createAt' timestamp NOT NULL,
-  'updateAt' timestamp DEFAULT NULL,
-  PRIMARY KEY ('id')
+CREATE TABLE users (
+  id smallint(6) NOT NULL,
+  mail varchar(95) NOT NULL,
+  password varchar(95) NOT NULL,
+  foto varchar(255) DEFAULT NULL,
+  createAt timestamp NOT NULL,
+  updateAt timestamp DEFAULT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE DATABASE IF NOT EXISTS green_db;

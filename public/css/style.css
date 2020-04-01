@@ -68,8 +68,10 @@ h3{
     flex-direction: row;
     justify-content: space-around;
 }
+
 .mapa{
-    width: 50%;
+    width:400px;
+    height:auto;
 }
 .texto-dire{
     width: 25%;
