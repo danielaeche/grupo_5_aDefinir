@@ -11,7 +11,7 @@ const carritoControllers= {
 
     },
 
-    agregarProducto: function(req,res){
+    agregarProducto: async function(req,res){
         //levantar id y cantidad producto
         let {productoId: prodId, qty} = req.body;
         //buscar producto en db

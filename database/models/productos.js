@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         fechaUpdate: {
-            type: dataTypes.timestamps,
+            type: dataTypes.DATE,
             allowNull: false
         },
         cantidadStock: {
