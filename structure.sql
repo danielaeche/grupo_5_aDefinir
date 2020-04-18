@@ -32,16 +32,17 @@ CREATE TABLE carrito (
 );
 
 CREATE TABLE productos (
-  id smallint(6) NOT NULL,
+  id bigint(20) NOT NULL AUTO_INCREMENT,
   categoria varchar(85) NOT NULL,
   nombre varchar(85) NOT NULL,
   descripcion varchar(255) DEFAULT NULL,
   foto varchar(255) DEFAULT NULL,
-  precioUnitario decimal(3,2) NOT NULL,
-  fechaUpdate timestamp NOT NULL,
-  cantidadStock smallint(6) NOT NULL,
+  precio_unitario decimal(8,2) NOT NULL,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
 
 CREATE TABLE producto_carrito (
   id smallint(6) NOT NULL,
@@ -51,3 +52,4 @@ CREATE TABLE producto_carrito (
   precioUnitario decimal(3,2) DEFAULT NULL,
   PRIMARY KEY (id)
 );
+

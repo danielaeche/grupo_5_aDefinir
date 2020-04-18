@@ -26,14 +26,6 @@ module.exports = (sequelize, dataTypes) => {
         precioUnitario: {
             type: dataTypes.INTEGER,
             allowNull: false
-        },
-        fechaUpdate: {
-            type: dataTypes.DATE,
-            allowNull: false
-        },
-        cantidadStock: {
-            type: dataTypes.INTEGER,
-            allowNull: true
         }
     }
     let config = {
@@ -44,7 +36,7 @@ module.exports = (sequelize, dataTypes) => {
 
 
 const productos = sequelize.define(alias,cols,config);
-/* relacion con carrito */
+/* relacion con carrito 
 productos.associate = function(models){
     productos.belongsTo(models.carrito,{
         as: "carritos",
@@ -53,7 +45,7 @@ productos.associate = function(models){
         otherKey: "productoId",
         timestamps: false
     });
-}
+}*/
 return productos;
 
 }

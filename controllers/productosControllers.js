@@ -1,13 +1,10 @@
 let db = require('../database/models');
 
-const productosControllers= {
-        index: function(req, res) {
-            res.render('productos')},
-        
-        listarProductos: function(req,res){
+const productosControllers= {   
+        listar: function(req,res){
             db.productos.findAll()
                 .then(function(data){
-                    return res.render('productos', {productos:data})
+                    return res.render('productos/listar', {productos:data})
                    
                 })
                 .catch(err => {
@@ -15,23 +12,26 @@ const productosControllers= {
                 })
         },    
         
-    /*
-        create: function(req,res){
+    
+        crear: function(req,res){
             // traer las categorias
            
-            db.categoria.findAll()
+           /* db.categoria.findAll()
             .then(function(cats){
                 //devolver formulario de alta de productos
-                return res.render('productosFormularioAlta',{categorias: cats})
+                return res.render('productos/crear',{categorias: cats})
             })
             .catch(err => {
                 console.log(err)
                 res.send('Hubo un error, intentalo mas tarde')
-            })
+            })*/
+
+            let categorias = ["productos", "bolsones"]
+            return res.render('productos/crear',{categorias})
     
         },
-    */
-        agregarProducto:function(req,res){
+    
+        guardar:function(req,res){
             // recibir los datos por post
             // validar los datos
             // guardar en la base de datos a traves del modelo
@@ -41,14 +41,15 @@ const productosControllers= {
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 //foto: req.body.foto,
-                precioUnitario: req.body.precioUnitario,
-                fechaUpdate: req.body.fechaUpdate
+                precioUnitario: req.body.precioUnitario
             })
             .then(function(data){
-                return res.redirect(301, '/adminProductos')
+                return res.redirect('/productos')
                 
             })
             .catch(err => {
+                console.log(err);
+                
                 res.send('Hubo un error, intentalo mas tarde')
             })
         },

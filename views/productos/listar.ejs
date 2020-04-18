@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-    <%- include('partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
     
     <body>
       
-        <%- include('partials/header.ejs') %>        
+        <%- include('../partials/header.ejs') %>        
         <main>
             <div class="titulos">
                     <h3 class="encabezado">Productos</h3>                    
+            </div>
+            <div>
+                <% productos.forEach(producto => {%> 
+                    <p><%= producto.nombre %></p>
+                <% }) %>
             </div>
                 <section class="vip-products">
                     <article class="producto">
@@ -59,8 +64,8 @@
 
         </main>
         <hr>
-        <%- include('partials/footer.ejs') %>
-        <%- include('partials/scripts.ejs') %>
+        <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/scripts.ejs') %>
         
     </body>
 </html>
