@@ -54,10 +54,18 @@ const productosControllers= {
             })
         },
     
-        editarProducto:function(req,res){
-            // buscar el producto a editar
+        editar: function(req,res){
+            db.productos.findByPk(req.params.id)
+                .then(
+                    function(producto){
+                        res.render("editar",
+                        {productos: producto});
+                    }
+                )
+        },
 
-            // agregar cambios a la base
+        actualizar:function(req,res){
+            // agregar cambios a la base para el producto editado
             db.productos.update({
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
@@ -65,6 +73,10 @@ const productosControllers= {
                 //foto: req.body.foto,
                 precioUnitario: req.body.precioUnitario,
                 fechaUpdate: req.body.fechaUpdate
+            }, {
+                where: {
+                    id: req.params.id
+                }
             })
             .then(function(data){
                 return res.redirect(301, '/adminProductos')
@@ -75,7 +87,18 @@ const productosControllers= {
             })
         },
 
-        eliminarProducto: function(req, res){
+        detalle: function(req,res){
+            //buscar producto id
+            db.productos.findByPk(req.params.id)
+                .then(data => {
+                    return res.render('producto/detalle', {productos:data})
+                })
+                .catch(err => {
+                    res.send('Hubo un error, intentalo mas tarde')
+                })
+        },
+
+        borrar: function(req, res){
             db.productos.destroy({
                 where: {
                 productoId: req.params.producto
