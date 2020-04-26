@@ -5,11 +5,11 @@
     <body>
         <%- include('partials/header.ejs') %>
         <main>
-            <div class="row">
+        <div class="row">
 		<div class="col">
-                    <h2 class="encabezado">Carrito de Compra</h2>                    
+        <h2 class="encabezado">Carrito de Compra</h2>                    
         
-		<table>
+		<table class="tabla">
 		<thead>
 			<tr>
 			<th>Producto </th>
@@ -25,8 +25,8 @@
 			<td><%= producto.producto_carrito.cantidad %> </td>
 			<td><%= producto.producto_carrito.precioUnitario %> </td>
 			<td>
-			<form action="/carrito/<%=producto.id%>?_method=eliminarProducto" method="post">
-			<button>Borrar</button>
+			<form action="/carrito/<%=producto.id%>" method="POST">
+			<button class="botones">Borrar</button>
 			</form>
 			</td>
 			</tr>
@@ -38,7 +38,7 @@
 			<td> </td>
 			<td>
 			
-			<button>Comprar</button>
+			<button class="botones">Comprar</button>
 			
 			</td>	
 		</tr>

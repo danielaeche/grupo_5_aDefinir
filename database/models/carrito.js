@@ -7,11 +7,11 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
-        userId: {
+        user_id: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        precioTotal: {
+        precio_total: {
             type: dataTypes.INTEGER,
             allowNull: true,
             dafaultValue: 0
@@ -22,7 +22,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         date: {
             type: dataTypes.DATE,
-            allowNull: false
+            allowNull: true
         }
     }
     let config = {
@@ -38,8 +38,8 @@ carrito.associate = function(models){
     carrito.belongsTo(models.productos,{
         as: "productos",
         throught: "producto_carrito",
-        foreignKey: "productoId",
-        otherKey: "carritoId",
+        foreignKey: "producto_id",
+        otherKey: "carrito_id",
         timestamps: false
     });
 }
@@ -48,7 +48,7 @@ carrito.associate = function(models){
 carrito.associate = function(models){
     carrito.belongsTo(models.users,{
         as: "usuario",
-        foreignKey: "userId"
+        foreignKey: "user_id"
     });
 } 
 
