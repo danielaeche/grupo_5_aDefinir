@@ -1,6 +1,17 @@
 let db = require('../database/models');
 
 const productosControllers= {   
+        admin: function(req,res){
+            db.productos.findAll()
+                .then(function(data){
+                    return res.render('productos/admin',{productos:data})
+                })
+                .catch(err => {
+                    res.send('Hubo un error probar mas tarde')
+                })
+                        
+        },
+
         listar: function(req,res){
             db.productos.findAll()
                 .then(function(data){
@@ -40,7 +51,7 @@ const productosControllers= {
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
-                //foto: req.body.foto,
+                foto: req.body.foto,
                 precioUnitario: req.body.precioUnitario
             })
             .then(function(data){
@@ -58,7 +69,7 @@ const productosControllers= {
             db.productos.findByPk(req.params.id)
                 .then(
                     function(producto){
-                        res.render("editar",
+                        res.render('productos/editar',
                         {productos: producto});
                     }
                 )
@@ -71,15 +82,14 @@ const productosControllers= {
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 //foto: req.body.foto,
-                precioUnitario: req.body.precioUnitario,
-                fechaUpdate: req.body.fechaUpdate
+                precioUnitario: req.body.precioUnitario
             }, {
                 where: {
                     id: req.params.id
                 }
             })
             .then(function(data){
-                return res.redirect(301, '/adminProductos')
+                return res.redirect('/productos/admin')
                 
             })
             .catch(err => {
@@ -89,9 +99,12 @@ const productosControllers= {
 
         detalle: function(req,res){
             //buscar producto id
+            //console.log(req.params.id)
             db.productos.findByPk(req.params.id)
                 .then(data => {
-                    return res.render('producto/detalle', {productos:data})
+                    console.log(data)
+                    res.render('productos/detalle', {productos:data})
+                    
                 })
                 .catch(err => {
                     res.send('Hubo un error, intentalo mas tarde')
@@ -101,11 +114,10 @@ const productosControllers= {
         borrar: function(req, res){
             db.productos.destroy({
                 where: {
-                productoId: req.params.producto
+                id: req.params.id
             }}) 
-            .then(function(data){
-                return res.redirect(301, '/adminProductos')
-            })
+            
+                res.redirect('/productos/admin')
         }
     
 }

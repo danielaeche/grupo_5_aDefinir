@@ -29,7 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/bolsones', bolsonesRouter);
 app.use('/carrito', carritoRouter);
-//app.use('/detalle', detalleRouter);
+//app.use('/productos/detalle', productosRouter);
 app.use('/productos', productosRouter);
 app.use('/perfil', perfilRouter)
 

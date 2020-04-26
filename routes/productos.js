@@ -4,11 +4,12 @@ var productosControllers= require ('../controllers/productosControllers');
 
 router.get('/', productosControllers.listar);
 router.get('/crear', productosControllers.crear);
+router.get('/admin', productosControllers.admin);
 router.post('/', productosControllers.guardar);
-router.get('/:id', productosControllers.detalle);
-router.get('/:id/editar', productosControllers.editar);
-router.put('/:id', productosControllers.actualizar);
-router.delete('/:id', productosControllers.borrar);
+router.get('/detalle/:id', productosControllers.detalle);
+router.get('/editar/:id', productosControllers.editar);
+router.post('/editar/:id', productosControllers.actualizar);
+router.post('/admin/:id', productosControllers.borrar);
 
 
 module.exports = router;
