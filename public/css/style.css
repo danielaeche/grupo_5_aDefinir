@@ -299,4 +299,26 @@ article button{
     flex-wrap: wrap;
     justify-content: space-around;
 }
-/* FIN CSS bolsones y producto*/
+
+.tabla{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+
+.tabla th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(97, 76, 175);
+    color: white;
+}
+
+.botones{
+    background-color:rgb(153, 188, 204);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+}

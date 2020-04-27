@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/head.ejs') %>
+    </head>
+    <body>
+        <%- include('../partials/header.ejs') %>
+        <main>
+		<div class="container">
+        <div class="row">
+		<div class="col">
+        <h2 class="encabezado">Administrar Productos</h2>     
+			
+		<a href='/productos/crear'><button class="botones">Agregar</button></a>
+		<br><br>          
+        
+		<table class="tabla">
+		<thead>
+			<tr>
+			<th>Categoria </th>
+			<th>Nombre </th>
+			<th>Descripcion </th>
+			<th>Precio Unitario </th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<% productos.forEach(producto => {%>
+			<tr>
+			<td><%= producto.categoria %> </td>
+			<td><%= producto.nombre %> </td>
+			<td><%= producto.descripcion %> </td>
+			<td><%= producto.precioUnitario %> </td>
+			<td>
+			<a href='editar/<%= producto.id %>'><button class="botones">Editar</button></a>
+			</td>
+			<td>
+			<form action="/productos/admin/<%=producto.id%>" method="POST">
+			<button class="botones">Borrar</button>
+			</form>
+			</td>
+			</tr>
+		<% }) %>
+	
+		</tbody>
+
+		</table>
+
+
+		</div>
+	    </div>
+</div>          
+        </main>
+        <hr>
+        <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/scripts.ejs') %>
+        
+    </body>
+</html>

@@ -2,6 +2,17 @@ let db = require('../database/models');
 
 
 const productosControllers= {   
+        admin: function(req,res){
+            db.productos.findAll()
+                .then(function(data){
+                    return res.render('productos/admin',{productos:data})
+                })
+                .catch(err => {
+                    res.send('Hubo un error probar mas tarde')
+                })
+                        
+        },
+
         listar: function(req,res){
             db.productos.findAll()
                 .then(function(data){
@@ -41,7 +52,7 @@ const productosControllers= {
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
-                //foto: req.body.foto,
+                foto: req.body.foto,
                 precioUnitario: req.body.precioUnitario
             })
             .then(function(data){
@@ -55,20 +66,31 @@ const productosControllers= {
             })
         },
     
-        editarProducto:function(req,res){
-            // buscar el producto a editar
+        editar: function(req,res){
+            db.productos.findByPk(req.params.id)
+                .then(
+                    function(producto){
+                        res.render('productos/editar',
+                        {productos: producto});
+                    }
+                )
+        },
 
-            // agregar cambios a la base
+        actualizar:function(req,res){
+            // agregar cambios a la base para el producto editado
             db.productos.update({
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
                 //foto: req.body.foto,
-                precioUnitario: req.body.precioUnitario,
-                fechaUpdate: req.body.fechaUpdate
+                precioUnitario: req.body.precioUnitario
+            }, {
+                where: {
+                    id: req.params.id
+                }
             })
             .then(function(data){
-                return res.redirect(301, '/adminProductos')
+                return res.redirect('/productos/admin')
                 
             })
             .catch(err => {
@@ -76,20 +98,28 @@ const productosControllers= {
             })
         },
 
-        eliminarProducto: function(req, res){
+        detalle: function(req,res){
+            //buscar producto id
+            //console.log(req.params.id)
+            db.productos.findByPk(req.params.id)
+                .then(data => {
+                    console.log(data)
+                    res.render('productos/detalle', {productos:data})
+                    
+                })
+                .catch(err => {
+                    res.send('Hubo un error, intentalo mas tarde')
+                })
+        },
+
+        borrar: function(req, res){
             db.productos.destroy({
                 where: {
-                productoId: req.params.producto
+                id: req.params.id
             }}) 
-            .then(function(data){
-                return res.redirect(301, '/adminProductos')
-            })
+            
+                res.redirect('/productos/admin')
         },
-        
-        paginaDetalleProducto: function(req, res) {
-            res.render('./usuario/detalleProducto')
-        },
-        
     
         mostrarDetalleProducto: function(req,res){
                 //buscar producto id

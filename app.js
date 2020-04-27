@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');//Rutas de autenticación
 var bolsonesRouter = require('./routes/bolsones')
 var carritoRouter = require('./routes/carrito')
+//var detalleRouter = require('./routes/detalle')
 var productosRouter = require('./routes/productos')
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/bolsones', bolsonesRouter);
 app.use('/carrito', carritoRouter);
+//app.use('/productos/detalle', productosRouter);
 app.use('/productos', productosRouter);
 
 
