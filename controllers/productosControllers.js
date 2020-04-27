@@ -1,5 +1,6 @@
 let db = require('../database/models');
 
+
 const productosControllers= {   
         listar: function(req,res){
             db.productos.findAll()
@@ -83,7 +84,22 @@ const productosControllers= {
             .then(function(data){
                 return res.redirect(301, '/adminProductos')
             })
-        }
+        },
+        
+        paginaDetalleProducto: function(req, res) {
+            res.render('./usuario/detalleProducto')
+        },
+        
     
+        mostrarDetalleProducto: function(req,res){
+                //buscar producto id
+            db.productos.findByPk(req.params.id)
+                .then(data => {
+                        return res.render('./usuario/detalleProducto', {productos:data})
+                })
+                .catch(err => {
+                        res.send('Hubo un error, intentalo mas tarde')
+                })
+        },
 }
 module.exports= productosControllers;
