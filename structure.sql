@@ -1,24 +1,13 @@
 CREATE DATABASE IF NOT EXISTS green_db;
 
 CREATE TABLE users (
-  id smallint(6) NOT NULL,
+  id bigint(20) NOT NULL AUTO_INCREMENT,
+  name varchar(95) DEFAULT NULL,
   mail varchar(95) NOT NULL,
   password varchar(95) NOT NULL,
   foto varchar(255) DEFAULT NULL,
-  createAt timestamp NOT NULL,
-  updateAt timestamp DEFAULT NULL,
-  PRIMARY KEY (id)
-);
-
-CREATE DATABASE IF NOT EXISTS green_db;
-
-CREATE TABLE users (
-  id smallint(6) NOT NULL,
-  mail varchar(95) NOT NULL,
-  password varchar(95) NOT NULL,
-  foto varchar(255) DEFAULT NULL,
-  createAt timestamp NOT NULL,
-  updateAt timestamp null,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
@@ -38,7 +27,7 @@ CREATE TABLE productos (
   descripcion varchar(255) DEFAULT NULL,
   foto varchar(255) DEFAULT NULL,
   precio_unitario decimal(8,2) NOT NULL,
-  created_at timestamp NULL DEFAULT NULL,
+  created_at timestamp NULL NOT NULL,
   updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
