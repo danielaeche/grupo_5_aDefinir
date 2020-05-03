@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../partials/head.ejs') %>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+    <form action="/users/perfil?_method=PUT" method="POST" class="form-perfil">
+        <div class="form-group">
+            <% if (typeof errors !== 'undefined') { errors.map(function(error) { %>
+                
+                <p><%error.msg %></p>
+                <% })
+                
+            }%>
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" class="form-control" 
+                   value="<%= typeof user != 'undefined' ? user.name: '' %>"><br>
+            <label for="Email">Email:</label>
+            <input type="text" name="email" class="form-control" 
+                   value="<%= typeof user != 'undefined' ? user.mail: '' %>"><br>
+            <label for="foto">Cambiar imagen de perfil:</label>
+            <input type="file" name="foto" class="btn btn-outline-success" style="border: none;" value="<%= typeof user != 'undefined' ? user.foto: '' %>">
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-outline-success" ><a style="text-decoration:none; color: black;">Guardar</a></button>
+        </div>
+    </form>
+    <%- include('../partials/scripts.ejs') %>
+</body>
+</html>

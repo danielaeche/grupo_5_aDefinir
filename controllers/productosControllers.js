@@ -1,5 +1,6 @@
 let db = require('../database/models');
 
+
 const productosControllers= {   
         admin: function(req,res){
             db.productos.findAll()
@@ -118,7 +119,17 @@ const productosControllers= {
             }}) 
             
                 res.redirect('/productos/admin')
-        }
+        },
     
+        mostrarDetalleProducto: function(req,res){
+                //buscar producto id
+            db.productos.findByPk(req.params.id)
+                .then(data => {
+                        return res.render('./usuario/detalleProducto', {productos:data})
+                })
+                .catch(err => {
+                        res.send('Hubo un error, intentalo mas tarde')
+                })
+        },
 }
 module.exports= productosControllers;

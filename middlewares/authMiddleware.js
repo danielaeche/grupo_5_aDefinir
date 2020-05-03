@@ -1,8 +1,16 @@
-function authMiddleware (req,res,next){
-   if (req.session.user) {
-      return next();
+const db= require ('../database/models');
+
+const locals = (req, res, next) => {
+
+   res.locals.isAuthenticated = false;
+   
+
+   if(req.session.user){
+      res.locals.isAuthenticated = true;
+      res.locals.user = req.session.user;
    }
-   return res.redirect('/users/login');
+   next()
 }
 
-module.exports = authMiddleware;
+
+module.exports = locals;

@@ -21,7 +21,25 @@
     display: flex;
     height: 100%;
 }
+.user-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: #008000;
+    height: 50%;
+    color:white;
+    padding:2px
+}
 
+.user-badge .user-image {
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.user-badge .user-name {
+    margin: 0 .5rem;
+}
 .menu{
     position: relative;
     top: 22%;
@@ -260,7 +278,7 @@ article button{
    
 }
 
-/* CSS bolsones*/
+/* CSS bolsones y producto*/
 
 .vip-products{
     width: 100%;
@@ -279,6 +297,7 @@ article button{
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .tabla{

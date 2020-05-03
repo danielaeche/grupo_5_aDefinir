@@ -7,6 +7,10 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
+        name: {
+            type: dataTypes.STRING,
+            allowNull: true
+        },
         mail: {
             type: dataTypes.STRING,
             allowNull: false
@@ -19,11 +23,11 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: true
         },
-        createAt: {
+        created_at: {
             type: dataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
-        updateAt: {
+        updated_at: {
             type: dataTypes.DATE,
             allowNull: true
         }
@@ -37,13 +41,13 @@ module.exports = (sequelize, dataTypes) => {
 
 const users = sequelize.define(alias,cols,config);
 
-/* relacion con carrito */
+/* relacion con carrito 
 users.associate = function(models){
     users.hasMany(models.carrito,{
         as: "carritos",
         foreignKey: "userId"
     });
-} 
+} */
 
 return users;
 

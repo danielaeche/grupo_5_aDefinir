@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var authMiddleware = require('./middlewares/authMiddleware');
+var {check, validationResult, body} = require('express-validator');
+var methodOverride = require('method-override')
+var React = require('react')
+var ReactDOMServer = require('react-dom/server')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');//Rutas de autenticación
@@ -11,7 +16,8 @@ var bolsonesRouter = require('./routes/bolsones')
 var carritoRouter = require('./routes/carrito')
 //var detalleRouter = require('./routes/detalle')
 var productosRouter = require('./routes/productos')
-var perfilRouter = require('./routes/perfil')
+var apiProductosRouter = require('./routes/api/productos')
+var apiUsersRouter = require('./routes/api/users')
 var app = express();
 
 // view engine setup
@@ -23,7 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:"frase secreta", resave:false, saveUninitialized:false}));
+app.use(methodOverride('_method'));
+app.use(session({secret:"frase secreta", resave:false, saveUninitialized:true}));
+app.use(authMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -31,7 +39,9 @@ app.use('/bolsones', bolsonesRouter);
 app.use('/carrito', carritoRouter);
 //app.use('/productos/detalle', productosRouter);
 app.use('/productos', productosRouter);
-app.use('/perfil', perfilRouter)
+app.use('/api/productos', apiProductosRouter);
+app.use('/api/users', apiUsersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
