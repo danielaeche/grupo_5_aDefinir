@@ -7,9 +7,26 @@ const carritoControllers= {
     },
     */
     buscarCarrito: function(req,res){
-        db.carrito.findByPk(req,session.carrito).then(data =>{
+       /* if (req.session.carrito !== undefined && req.session.carrito !== null) {
+        db.carrito.findByPk(req.session.carrito).then(data =>{
             res.json({carrito: data})
         })
+        } 
+        else {*/ db.carrito.create({
+                user_id: 2,
+                precio_total: 0,
+                status: 'abierto'
+            })
+            .then(function(data){
+                return res.redirect('/carrito')
+                
+            })
+            .catch(err => {
+                console.log(err);
+                
+                res.send('Hubo un error, intentalo mas tarde')
+            })
+        //}
     },
 
     agregar: async function(req,res){
@@ -19,11 +36,16 @@ const carritoControllers= {
         let producto = await db.producto.findByPk(prod_id);        
         //buscar el carrito en session
         //guardar el producto en el carrito
+        console.log(producto)
+        
+        //crear session si no existe
         db.carrito.findByPk(req.session.carrito).then(carrito => {
+            console.log(carrito)
             carrito.addItem(producto,{ through: {
                 cantidad: qty,
                 precioUnitario: producto.precio_unitario 
             }})
+            console.log(carrito)
             res.send('Producto agregado al carrito');
         })
     },

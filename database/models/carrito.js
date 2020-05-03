@@ -19,10 +19,6 @@ module.exports = (sequelize, dataTypes) => {
         status: {
             type: dataTypes.STRING,
             allowNull: true
-        },
-        date: {
-            type: dataTypes.DATE,
-            allowNull: true
         }
     }
     let config = {
