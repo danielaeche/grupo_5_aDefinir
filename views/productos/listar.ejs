@@ -16,9 +16,9 @@
                     
                     <article class="producto">
                         <div class="photo-container">
-                            <a href="#"><img class="photo" src="../images/tomates.jpg" alt="pdto 01"></a>
+                        <a href='productos/detalle/<%= producto.id %>'><img class="photo" src="..<%= producto.foto %>" alt="pdto 01"></a>
                         </div>
-                        <a href='productos/detalle/<%= producto.id %>'><h2><%= producto.nombre %></h2></a>
+                        <h2><%= producto.nombre %></h2>
                         <p>$<%= producto.precioUnitario %></p>
                     </article>
                     
