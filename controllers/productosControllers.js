@@ -52,7 +52,7 @@ const productosControllers= {
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
-                foto: req.body.foto,
+                foto: '/images/'+req.body.nombre+'.jpg',
                 precioUnitario: req.body.precioUnitario
             })
             .then(function(data){
@@ -82,7 +82,7 @@ const productosControllers= {
                 categoria: req.body.categoria,
                 nombre: req.body.nombre,
                 descripcion: req.body.descripcion,
-                //foto: req.body.foto,
+                //foto: '/images/'+req.body.nombre+'.jpg',
                 precioUnitario: req.body.precioUnitario
             }, {
                 where: {
@@ -121,6 +121,7 @@ const productosControllers= {
                 res.redirect('/productos/admin')
         },
     
+        /*
         mostrarDetalleProducto: function(req,res){
                 //buscar producto id
             db.productos.findByPk(req.params.id)
@@ -130,6 +131,6 @@ const productosControllers= {
                 .catch(err => {
                         res.send('Hubo un error, intentalo mas tarde')
                 })
-        },
+        }, */
 }
 module.exports= productosControllers;
