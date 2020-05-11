@@ -8,7 +8,6 @@
         <div class="container-fluid">
             <section class="row">
                 <div class="col-12" id="banner">
-                    <h3> Precio: $<%=  productos.precioUnitario  %></h3>  
                 </div>
             </section>
             <section class="row">
@@ -16,8 +15,11 @@
                         <article class="col-6" id="art2">
                             <h1><%=  productos.nombre  %></h1>
                             <p class="description">Descripción: <%=  productos.descripcion  %></p>
-                            <form action="carrito" method="POST">
-                                <button type="button" class="btn btn-outline-success">Agregar al carrito</button>
+                            <h3> Precio: $<%=  productos.precioUnitario  %></h3>  
+                            <form action="../../carrito" method="POST">
+                                <input type="hidden" name="producto_id" value="<%=  productos.id  %>" />
+                                <input type="hidden" name="producto_precio" value="<%=  productos.precioUnitario  %>" />
+                                <button type="submit" class="btn btn-outline-success">Agregar al carrito</button>
                             </form>
                         </article>
                         <article class="col-6" id="art3">
