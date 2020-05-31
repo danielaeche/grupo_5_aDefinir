@@ -16,7 +16,8 @@ CREATE TABLE carrito (
   user_id int(6) NOT NULL,
   precio_total decimal(5,2) NOT NULL,
   status varchar(10) NOT NULL,
-  date timestamp NULL DEFAULT NULL,
+  created_at timestamp NULL DEFAULT NULL,
+  updated_at timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
 

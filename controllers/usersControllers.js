@@ -56,6 +56,16 @@ const usersControllers= {
             if (result) {
               req.session.user = user;
               res.locals.user = req.session.user;
+              //buscar carrito del user o crearlo
+              db.carrito.findOrCreate({
+                where: {id: req.cookies.carrito || 0},
+                defaults: {}
+              }).then(data => {
+                req.session.carrito = data[0].id
+              })
+              
+              
+              //
               res.redirect("/users/perfil");
             } else {
               res.render("./usuario/login", {

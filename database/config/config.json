@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "Sofi1310",
+      "password": "",
       "database": "green_db",
       "host": "127.0.0.1",
       "dialect": "mysql",

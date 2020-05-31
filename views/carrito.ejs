@@ -19,18 +19,20 @@
 		</thead>
 
 		<tbody>
-		<% carrito.productos.forEach(producto => {%>
+			<% producto_carrito.forEach(prod => {%> 
+				
 			<tr>
-			<td><%= producto.nombre %> </td>
-			<td><%= producto.producto_carrito.cantidad %> </td>
-			<td><%= producto.producto_carrito.precioUnitario %> </td>
+			<td> <%= prod.prods.nombre %> </td>
+			<td> 1 </td>
+			<td> $<%= prod.precioUnitario %></td>
 			<td>
-			<form action="/carrito/<%=producto.id%>" method="POST">
-			<button class="botones">Borrar</button>
-			</form>
+				<form action="/carrito/<%=prod.productoId%>" method="POST">
+				<button class="botones">Borrar</button>
+				</form>	
 			</td>
 			</tr>
-		<% }) %>
+		
+			<% }) %>
 	
 		<tr>
 			<td></td>
@@ -38,8 +40,8 @@
 			<td> </td>
 			<td>
 			
-			<button class="botones">Comprar</button>
-			
+				<a href='../'><button class="botones">Comprar</button></a>
+					
 			</td>	
 		</tr>
 
