@@ -9,6 +9,7 @@ var {check, validationResult, body} = require('express-validator');
 var methodOverride = require('method-override')
 var React = require('react')
 var ReactDOMServer = require('react-dom/server')
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');//Rutas de autenticación
@@ -16,8 +17,7 @@ var bolsonesRouter = require('./routes/bolsones')
 var carritoRouter = require('./routes/carrito')
 //var detalleRouter = require('./routes/detalle')
 var productosRouter = require('./routes/productos')
-var apiProductosRouter = require('./routes/api/productos')
-var apiUsersRouter = require('./routes/api/users')
+var apiRouter = require('./routes/api')
 var app = express();
 
 // view engine setup
@@ -32,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret:"frase secreta", resave:false, saveUninitialized:true}));
 app.use(authMiddleware);
+app.use(cors())
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -39,8 +41,8 @@ app.use('/bolsones', bolsonesRouter);
 app.use('/carrito', carritoRouter);
 //app.use('/productos/detalle', productosRouter);
 app.use('/productos', productosRouter);
-app.use('/api/productos', apiProductosRouter);
-app.use('/api/users', apiUsersRouter);
+app.use('/api', apiRouter);
+
 
 
 // catch 404 and forward to error handler
